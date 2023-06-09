@@ -1,0 +1,39 @@
+h1{
+    width: 250px;
+}
+.line{
+    display: flex;
+    background-color: brown;
+    width: 250px;
+    height: 55px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.line div{
+    padding: 5px;
+}
+
+#caixaTexto{
+    width: 250px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 30px;
+    display: flex; 
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #eaeaea;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.9);
+}

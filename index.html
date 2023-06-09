@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <div><h1>Calculadora</h1></div>
+    <input type="text" id="caixaTexto" value="" readonly>
+    <ul>
+        <li class="line"><div class="button" onclick="buttonPress(this)">7</div><div class="button" onclick="buttonPress(this)">8</div><div class="button" onclick="buttonPress(this)">9</div><div class="button" onclick="buttonPress(this)">+</div></li>
+        <li class="line"><div class="button" onclick="buttonPress(this)">4</div><div class="button" onclick="buttonPress(this)">5</div><div class="button" onclick="buttonPress(this)">6</div><div class="button" onclick="buttonPress(this)">-</div></li>
+        <li class="line"><div class="button" onclick="buttonPress(this)">1</div><div class="button" onclick="buttonPress(this)">2</div><div class="button" onclick="buttonPress(this)">3</div><div class="button" onclick="buttonPress(this)">*</div></li>
+        <li class="line"><div class="button" onclick="buttonPress(this)">0</div><div class="button" onclick="buttonPress(this)">.</div><div class="button" onclick="buttonPress(this)">=</div><div class="button" onclick="buttonPress(this)">/</div></li>
+        <li class="line"><div class="button" onclick="buttonPress(this)">Zerar</div></li>
+    </ul>
+</body>
+<script>
+    var num1 = 0;
+    var num2 = 0;
+    var operacao;
+    var continua;
+    function buttonPress(element){
+        var caracter = element.innerHTML;
+        
+        if(caracter == "Zerar"){
+            document.getElementById("caixaTexto").value = null;
+            num1 = 0;
+            num2 = 0;
+            operacao = undefined;
+            continua = undefined;
+        }
+        else if (caracter === "+" || caracter === "-" || caracter === "*" || caracter === "/") {
+            operacao = caracter;
+            num1 = Number(document.getElementById("caixaTexto").value);
+            document.getElementById("caixaTexto").value = "";
+            continua = undefined;
+        } else if (caracter == "=") {
+            
+            if(continua != "=")
+                num2 = Number(document.getElementById("caixaTexto").value);
+            var resultado;
+
+            switch (operacao) {
+                case "+":
+                    resultado = num1 + num2;
+                    break;
+                case "-":
+                    resultado = num1 - num2;
+                    break;
+                case "*":
+                    resultado = num1 * num2;
+                    break;
+                case "/":
+                    resultado = num1 / num2;
+                    break;
+            }
+            document.getElementById("caixaTexto").value = resultado;
+            num1 = resultado;
+            continua = "=";
+
+        } 
+        else
+            document.getElementById("caixaTexto").value += caracter;
+    }
+    
+</script>
+</html>
